@@ -1,0 +1,14 @@
+---
+import { ThemeToggle } from "../components/ThemeToggle";
+---
+<header>
+    <div class="dui-navbar bg-base-200 px-10 lg:px-[16vw]">
+        <a class="flex-1" href="/">borserog</a>
+
+        <nav class="flex-none gap-2">
+            <a class="dui-btn dui-btn-primary" href="/blog">Blog</a>
+            <a class="dui-btn dui-btn-ghost" href="/about">About</a>
+            <ThemeToggle client:only/>
+        </nav>
+    </div>
+</header>
