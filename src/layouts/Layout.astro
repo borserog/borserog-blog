@@ -1,6 +1,7 @@
 ---
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
+import { ViewTransitions } from "astro:transitions";
 
 export type SocialMetaTags = {
   title: string;
@@ -15,6 +16,10 @@ interface Props {
 }
 
 const { title, socialMeta } = Astro.props;
+
+const isSafari = /^((?!chrome|android).)*safari/i.test(
+  Astro.request.headers.get("user-agent")
+);
 ---
 
 <!doctype html>
@@ -40,35 +45,39 @@ const { title, socialMeta } = Astro.props;
       )
     }
     <title>{title}</title>
+    {!isSafari && <ViewTransitions />}
   </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <slot />
+    <Footer />
+
+    <style>
+      :root {
+        --max-width: 1400px;
+      }
+    </style>
+
+    <script>
+      const DATA_THEME_KEY = "data-theme";
+      const LIGHT_THEME = "light";
+
+      const localStorage = window.localStorage;
+      const htmlElement = document.querySelector("html");
+
+      const setTheme = () => {
+        if (!localStorage.getItem(DATA_THEME_KEY)) {
+          localStorage.setItem(DATA_THEME_KEY, LIGHT_THEME);
+        }
+
+        htmlElement.setAttribute(
+          DATA_THEME_KEY,
+          localStorage.getItem(DATA_THEME_KEY)
+        );
+      };
+
+      window.addEventListener("DOMContentLoaded", () => setTheme());
+      document.addEventListener("astro:after-swap", () => setTheme());
+    </script>
+  </body>
 </html>
-
-<body class="min-h-screen flex flex-col">
-  <Header />
-  <slot />
-</body>
-<Footer />
-<slot name="social-meta-tag" />
-
-<style>
-  :root {
-    --max-width: 1400px;
-  }
-</style>
-
-<script>
-  const DATA_THEME_KEY = "data-theme";
-  const LIGHT_THEME = "light";
-
-  const localStorage = window.localStorage;
-  const htmlElement = document.querySelector("html");
-
-  if (!localStorage.getItem(DATA_THEME_KEY)) {
-    localStorage.setItem(DATA_THEME_KEY, LIGHT_THEME);
-  }
-
-  htmlElement.setAttribute(
-    DATA_THEME_KEY,
-    localStorage.getItem(DATA_THEME_KEY)
-  );
-</script>
