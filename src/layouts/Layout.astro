@@ -21,7 +21,6 @@ const { title, socialMeta } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -29,6 +28,8 @@ const { title, socialMeta } = Astro.props;
     {
       socialMeta && (
         <>
+          <meta name="title" content={socialMeta.title} />
+          <meta name="description" content={socialMeta.description} />
           <meta property="og:title" content={socialMeta.title} />
           <meta property="og:description" content={socialMeta.description} />
           <meta property="og:type" content={socialMeta.type} />
