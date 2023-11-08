@@ -6,8 +6,8 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark", "cupcake", "synthwave"],
-    darkTheme: "synthwave", // name of one of the included themes for dark mode
+    themes: ["light", "dark", "cupcake", "synthwave", "cyberpunk"],
+    darkTheme: "cyberpunk", // name of one of the included themes for dark mode
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components
     utils: true, // adds responsive and modifier utility classes

@@ -1,17 +1,18 @@
 ---
+import Icon from "astro-icon";
 import { ThemeToggle } from "../components/ThemeToggle";
 
-const { current } = Astro.props;
-
-console.log(Astro.url.pathname);
+const currentPage = Astro.url.pathname;
 ---
 <header class="bg-base-200 md:px-10">
     <div class="navbar justify-between m-auto max-w-screen-xl">
-        <a class="btn bg-gradient-to-r from-primary to-secondary text-white" href="/">borserog.dev</a>
+        <a class={`btn btn-ghost ${currentPage === '/' && 'btn-active'} w-16 h-16`} href="/">
+            <Icon name="pixelarticons:home"></Icon>
+        </a>
 
         <nav class="flex-none gap-2 pr-2">
-            <a class="btn btn-ghost" href="/blog">Blog</a>
-            <a class="btn btn-ghost" href="/about">About</a>
+            <a class={`btn btn-ghost ${currentPage == '/blog' && 'btn-active'}`} href="/blog">Blog</a>
+            <a class={`btn btn-ghost ${currentPage == '/about' && 'btn-active'}`} href="/about">About</a>
             <ThemeToggle client:only/>
         </nav>
     </div>
