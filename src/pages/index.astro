@@ -4,8 +4,9 @@ import Card from "../components/Card.astro";
 import { Icon } from "astro-icon";
 
 const socialMeta: SocialMetaTags = {
-  image: `${Astro.url.host}/hero.jpeg`,
-  description: "Gabriel Borsero, front-end developer",
+  image: `${Astro.url.origin}/hero.jpeg`,
+  description:
+    "This is my home page and blog, maybe a portfolio page too, who knows...",
   title: "Hey there, I'm Gabriel",
   url: Astro.url.href,
   type: "article",

@@ -35,13 +35,13 @@ const { title, socialMeta } = Astro.props;
           <meta property="og:type" content={socialMeta.type} />
           <meta property="og:url" content={socialMeta.url} />
           <meta property="og:image" content={socialMeta.image} />
+          <title>{socialMeta.title}</title>
         </>
       )
-    }</head
-  >
+    }
+    <title>{title}</title>
+  </head>
 </html>
-
-<title>{socialMeta.title}</title>
 
 <body class="min-h-screen flex flex-col">
   <Header />
