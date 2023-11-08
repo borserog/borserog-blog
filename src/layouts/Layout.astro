@@ -1,8 +1,8 @@
 ---
-import Footer from './Footer.astro';
-import Header from './Header.astro';
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -10,39 +10,40 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="min-h-screen flex flex-col">
-		<Header />
-			<slot />
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <slot />
+  </body>
+  <Footer />
 </html>
 
 <style>
-	:root {
-		--max-width: 1400px;
-	}
+  :root {
+    --max-width: 1400px;
+  }
 </style>
 
 <script>
-	const DATA_THEME_KEY = 'data-theme';
-	const LIGHT_THEME = 'light';
+  const DATA_THEME_KEY = "data-theme";
+  const LIGHT_THEME = "light";
 
-	const localStorage = window.localStorage;
-	const htmlElement = document.querySelector("html");
+  const localStorage = window.localStorage;
+  const htmlElement = document.querySelector("html");
 
+  if (!localStorage.getItem(DATA_THEME_KEY)) {
+    localStorage.setItem(DATA_THEME_KEY, LIGHT_THEME);
+  }
 
-	if (!localStorage.getItem(DATA_THEME_KEY)) {
-		localStorage.setItem(DATA_THEME_KEY, LIGHT_THEME);
-	}
-
-	htmlElement.setAttribute(DATA_THEME_KEY, localStorage.getItem(DATA_THEME_KEY))
+  htmlElement.setAttribute(
+    DATA_THEME_KEY,
+    localStorage.getItem(DATA_THEME_KEY)
+  );
 </script>
