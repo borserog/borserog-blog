@@ -1,11 +1,20 @@
 ---
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
+
+export type SocialMetaTags = {
+  title: string;
+  description: string;
+  type: string;
+  url: string;
+  image: string;
+};
 interface Props {
   title: string;
+  socialMeta?: SocialMetaTags;
 }
 
-const { title } = Astro.props;
+const { title, socialMeta } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,14 +25,29 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body class="min-h-screen flex flex-col">
-    <Header />
-    <slot />
-  </body>
-  <Footer />
+    <!-- SOCIAL META TAGS -->
+    {
+      socialMeta && (
+        <>
+          <meta property="og:title" content={socialMeta.title} />
+          <meta property="og:description" content={socialMeta.description} />
+          <meta property="og:type" content={socialMeta.type} />
+          <meta property="og:url" content={socialMeta.url} />
+          <meta property="og:image" content={socialMeta.image} />
+        </>
+      )
+    }</head
+  >
 </html>
+
+<title>{title}</title>
+
+<body class="min-h-screen flex flex-col">
+  <Header />
+  <slot />
+</body>
+<Footer />
+<slot name="social-meta-tag" />
 
 <style>
   :root {
