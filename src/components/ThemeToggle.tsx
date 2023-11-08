@@ -5,8 +5,8 @@ export const ThemeToggle = () => {
   const initialTheme = window.localStorage.getItem(Constants.DATA_THEME_KEY);
   const [lightIconInitialState, darkIconInitialState] =
     initialTheme === Constants.LIGHT_THEME
-      ? ["dui-swap-off", "dui-swap-on"]
-      : ["dui-swap-on", "dui-swap-off"];
+      ? [" swap-on", " swap-off"]
+      : [" swap-off", " swap-on"];
 
   const toggleTheme = () => {
     const htmlElement = document.querySelector("html");
@@ -30,7 +30,7 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <label className="dui-swap dui-swap-rotate">
+    <label className=" swap  swap-rotate">
       <input id="theme-checkbox" onClick={toggleTheme} type="checkbox" />
 
       <svg

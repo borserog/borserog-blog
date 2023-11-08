@@ -1,11 +1,26 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import { Icon } from "astro-icon";
 ---
 
 <Layout title="Home">
-	<main>
-		<h1>Home</h1>
-		<a href="/blog">go to Blog</a>
-	</main>
+  <main class="max-w-screen-xl m-auto md:px-10">
+    <div class="hero">
+      <div class="hero-content flex-col gap-5 lg:flex-row-reverse lg:gap-6">
+        <img
+          src="/hero.jpeg"
+          class="max-w-sm 2xl:max-w-lg rounded-lg shadow-2xl"
+        />
+        <div class="lg:pr-12">
+          <h1 class="text-7xl font-bold">Hey there,</h1>
+          <h1 class="text-7xl font-bold">I'm Gabriel!</h1>
+          <h3 class="text-xl py-6">
+            I'm a front-end developer that really enjoys turning elegant code
+            into performant and seamless user experiences.
+		  </h3>
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>

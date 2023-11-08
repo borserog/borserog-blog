@@ -1,13 +1,17 @@
 ---
 import { ThemeToggle } from "../components/ThemeToggle";
----
-<header>
-    <div class="dui-navbar bg-base-200 px-10 lg:px-[16vw]">
-        <a class="flex-1" href="/">borserog</a>
 
-        <nav class="flex-none gap-2">
-            <a class="dui-btn dui-btn-primary" href="/blog">Blog</a>
-            <a class="dui-btn dui-btn-ghost" href="/about">About</a>
+const { current } = Astro.props;
+
+console.log(Astro.url.pathname);
+---
+<header class="bg-base-200 md:px-10">
+    <div class="navbar justify-between m-auto max-w-screen-xl">
+        <a class="btn bg-gradient-to-r from-primary to-secondary text-white" href="/">borserog.dev</a>
+
+        <nav class="flex-none gap-2 pr-2">
+            <a class="btn btn-ghost" href="/blog">Blog</a>
+            <a class="btn btn-ghost" href="/about">About</a>
             <ThemeToggle client:only/>
         </nav>
     </div>
