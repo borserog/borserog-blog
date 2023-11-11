@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+
+interface Props {
+  imageUrl: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  slug: string;
+}
+
+const { slug, excerpt, imageUrl, title, date } = {
+  imageUrl: "http://localhost:4321/hero.jpeg",
+  title: "Mocked Data 1",
+  excerpt: "This is the first mocked data item. It has a short description.",
+  date: "2023-01-01", // Add a date string in the format that suits your application
+  slug: "mocked-data-1",
+};
+---
+
+<Layout title="POST">
+  <main class="w-auto max-w-[890px] mx-6 lg:mx-auto my-6 flex-auto">
+    <Image
+      transition:animate="initial"
+      width="100"
+      height="1000"
+      alt="post image"
+      src={imageUrl}
+    />
+    <h2 class="text-2xl">{title}</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta at eaque
+      nemo aut optio itaque error incidunt impedit dicta illum? Quo quisquam
+      accusantium ullam. Earum laborum optio vitae consectetur nesciunt.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta at eaque
+      nemo aut optio itaque error incidunt impedit dicta illum? Quo quisquam
+      accusantium ullam. Earum laborum optio vitae consectetur nesciunt.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta at eaque
+      nemo aut optio itaque error incidunt impedit dicta illum? Quo quisquam
+      accusantium ullam. Earum laborum optio vitae consectetur nesciunt.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta at eaque
+      nemo aut optio itaque error incidunt impedit dicta illum? Quo quisquam
+      accusantium ullam. Earum laborum optio vitae consectetur nesciunt.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta at eaque
+      nemo aut optio itaque error incidunt impedit dicta illum? Quo quisquam
+      accusantium ullam. Earum laborum optio vitae consectetur nesciunt.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta at eaque
+      nemo aut optio itaque error incidunt impedit dicta illum? Quo quisquam
+      accusantium ullam. Earum laborum optio vitae consectetur nesciunt.
+    </p>
+  </main>
+</Layout>

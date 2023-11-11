@@ -1,11 +1,50 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const mockedData = [
+  {
+    imageUrl: "http://localhost:4321/hero.jpeg",
+    title: "Mocked Data 1",
+    excerpt: "This is the first mocked data item. It has a short description.",
+    date: "2023-01-01", // Add a date string in the format that suits your application
+    slug: "mocked-data-1",
+  },
+  {
+    imageUrl: "http://localhost:4321/hero.jpeg",
+    title: "Mocked Data 2",
+    excerpt:
+      "Here comes the second mocked data item with a different description.",
+    date: "2023-02-15", // Add a date string in the format that suits your application,
+    slug: "mocked-data-1",
+  },
+  {
+    imageUrl: "http://localhost:4321/hero.jpeg",
+    title: "Mocked Data 3",
+    excerpt: "The third mocked data item has its own unique description.",
+    date: "2023-03-30", // Add a date string in the format that suits your application
+    slug: "mocked-data-1",
+  },
+  // Add more items as needed
+];
 ---
+
 <Layout title="Blog">
-	<main class="max-w-screen-xl mx-6 lg:mx-auto my-6 flex-auto">
+  <main class="w-auto max-w-[890px] mx-6 lg:mx-auto my-6 flex-auto">
+    <h1 class="text-5xl font-bold">Blog</h1>
 
-	<h1 class="text-5xl font-bold">Blog</h1>
-	<p class="py-6">Coming soon...</p>
-	</main>
-
+    <div class="divider"></div>
+    <div class="flex flex-col gap-10">
+      {
+        mockedData.map((el) => {
+          return (
+            <div class="flex flex-col">
+              <p class=" mb-3">{el.date}</p>
+              <Card {...el} />
+            </div>
+          );
+        })
+      }
+    </div>
+  </main>
 </Layout>
