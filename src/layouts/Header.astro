@@ -6,12 +6,9 @@ import { HomeIcon } from "../components/HomeIcon";
 const currentPage = Astro.url.pathname;
 ---
 
-<header class="bg-base-200 md:px-10">
-  <div class="navbar justify-between m-auto max-w-[945px]">
-    <a
-      class={`btn btn-ghost ${currentPage === "/" && "btn-active"} w-16 h-16`}
-      href="/"
-    >
+<header class="flex flex-row justify-center bg-base-200 md:px-10 w-screen">
+  <div class="navbar justify-between max-w-[945px]">
+    <a class={`btn btn-ghost ${currentPage === "/" && "btn-active"}`} href="/">
       <HomeIcon client:only />
     </a>
 
