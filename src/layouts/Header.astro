@@ -15,15 +15,22 @@ const currentPage = Astro.url.pathname;
       <HomeIcon client:only />
     </a>
 
-    <nav class="flex-none gap-2 pr-2">
+    <nav class="flex-none gap-6 pr-2">
       <a
         class={`btn btn-ghost ${currentPage == "/blog" && "btn-active"}`}
         href="/blog">Blog</a
       >
-      <a
-        class={`btn btn-ghost ${currentPage == "/about" && "btn-active"} mr-2`}
-        href="/about">About</a
-      >
+      <div class="flex flex-row gap-3">
+        <a target="_blank" href="https://www.linkedin.com/in/borserog/
+        ">
+          <Icon class="w-10 h-10" name="mdi:linkedin" />
+        </a>
+        <a target="_blank" href="https://github.com/borserog
+        ">
+          <Icon class="w-10 h-10" name="mdi:github" />
+        </a>
+      </div>
+
       <ThemeToggle client:only />
     </nav>
   </div>
