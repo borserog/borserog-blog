@@ -1,32 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import Card from "../../components/Card.astro";
 import Layout from "../../layouts/Layout.astro";
+import { collections } from "../../content/config";
 
-const mockedData = [
-  {
-    imageUrl: "http://localhost:4321/hero.jpeg",
-    title: "Mocked Data 1",
-    excerpt: "This is the first mocked data item. It has a short description.",
-    date: "2023-01-01", // Add a date string in the format that suits your application
-    slug: "mocked-data-1",
-  },
-  {
-    imageUrl: "http://localhost:4321/hero.jpeg",
-    title: "Mocked Data 2",
-    excerpt:
-      "Here comes the second mocked data item with a different description.",
-    date: "2023-02-15", // Add a date string in the format that suits your application,
-    slug: "mocked-data-1",
-  },
-  {
-    imageUrl: "http://localhost:4321/hero.jpeg",
-    title: "Mocked Data 3",
-    excerpt: "The third mocked data item has its own unique description.",
-    date: "2023-03-30", // Add a date string in the format that suits your application
-    slug: "mocked-data-1",
-  },
-  // Add more items as needed
-];
+const allPosts = await getCollection("posts");
 ---
 
 <Layout title="Blog">
@@ -35,17 +13,16 @@ const mockedData = [
 
     <div class="divider"></div>
     <div class="flex flex-col gap-10">
-      <p>Coming soon...</p>
-      <!-- {
-        mockedData.map((el) => {
+      {
+        allPosts.map((el) => {
           return (
             <div class="flex flex-col">
-              <p class=" mb-3">{el.date}</p>
-              <Card {...el} />
+              <p class="mb-3">{el}</p>
+              <Card post={el}} />
             </div>
           );
         })
-      } -->
+      }
     </div>
   </main>
 </Layout>

@@ -1,17 +1,15 @@
 ---
+import type { AstroAssets } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
 interface Props {
-  imageUrl: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  slug: string;
+  post: CollectionEntry<"posts">;
 }
 
-const { slug, excerpt, imageUrl, title } = Astro.props;
+const { post } = Astro.props;
 ---
 
-<a href={`/blog/${slug}`}>
-  <div
+<a href={`/blog/${post.slug}`}>
+  <!-- <div
     class="min-h-[200px] max-h-[20vh] cursor-pointer transition-all image-full card bg-gradient-to-r from-slate-400 to-slate-500 shadow-xl hover:scale-105 hover:shadow-2xl active:scale-100"
   >
     {
@@ -24,6 +22,7 @@ const { slug, excerpt, imageUrl, title } = Astro.props;
     <div class="card-body">
       <h2 class="card-title">{title}</h2>
       <p>{excerpt}</p>
-    </div>
-  </div></a
->
+    </div> -->
+
+  click
+</a>
