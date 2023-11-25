@@ -1,10 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 interface Props {
   post: CollectionEntry<"posts">;
 }
 const { post } = Astro.props;
+const imagePath = Astro.url.origin + "/" + post.data.images.cover;
+console.log(imagePath);
 ---
 
 <a href={`/blog/${post.slug}`}>
@@ -12,11 +15,7 @@ const { post } = Astro.props;
     class="w-full sm:max-h-[20vh] cursor-pointer transition-all image-full card shadow-xl hover:scale-[1.02] hover:shadow-2xl active:scale-100"
   >
     <figure>
-      <img
-        src={`${Astro.url.origin}/${post.data.images.cover}`}
-        class="w-full"
-        alt="article image"
-      />
+      <img src={imagePath} class="w-full" alt="article image" />
     </figure>
     <div class="card-body">
       <h2 class="card-title">{[post.data.title]}</h2>
