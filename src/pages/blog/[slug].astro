@@ -3,33 +3,27 @@ import { getCollection } from "astro:content";
 
 import Layout, { type SocialMetaTags } from "../../layouts/Layout.astro";
 
-export async function getStaticPaths() {
-  const posts = await getCollection("posts");
-  return posts.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
-}
-
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const post = (await getCollection("posts").then((posts) => {
+  return posts.find((post) => post.slug === Astro.params.slug);
+})) as any;
 
 const socialMeta: SocialMetaTags = {
-  image: `${entry.data.images.cover}`,
-  description: entry.data.excerpt,
-  title: entry.data.title,
+  image: `${post.data.images.cover}`,
+  description: post.data.excerpt,
+  title: post.data.title,
   type: "article",
 };
+const { Content } = await post.render();
 ---
 
-<Layout title={entry.data.title} socialMeta={socialMeta}>
+<Layout title={post.data.title} socialMeta={socialMeta}>
   <main
     class="max-w-[890px] m-6 lg:mx-auto flex-auto prose prose-sm md:prose-lg"
   >
     <header>
-      <h1 class="!m-0">{entry.data.title}</h1>
+      <h1 class="!m-0">{post.data.title}</h1>
       <div class="divider"></div>
-      <p class="italic">{entry.data.date}</p>
+      <p class="italic">{post.data.date}</p>
     </header>
     <article>
       <Content />
