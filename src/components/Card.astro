@@ -5,10 +5,6 @@ interface Props {
   post: CollectionEntry<"posts">;
 }
 const { post } = Astro.props;
-const images = import.meta.glob(
-  "/src/content/posts/images/*.{jpeg,jpg,png,gif}"
-);
-const coverImageKey = `/src/content/posts/images/${post.data.images.cover}`;
 ---
 
 <a href={`/blog/${post.slug}`}>
@@ -16,7 +12,11 @@ const coverImageKey = `/src/content/posts/images/${post.data.images.cover}`;
     class="w-full sm:max-h-[20vh] cursor-pointer transition-all image-full card shadow-xl hover:scale-[1.02] hover:shadow-2xl active:scale-100"
   >
     <figure>
-      <Image src={images[coverImageKey]()} alt="article image" />
+      <img
+        src={`${Astro.url.origin}/${post.data.images.cover}`}
+        class="w-full"
+        alt="article image"
+      />
     </figure>
     <div class="card-body">
       <h2 class="card-title">{[post.data.title]}</h2>
