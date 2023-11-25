@@ -18,7 +18,7 @@ interface Props {
 const { title, socialMeta } = Astro.props;
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(
-  Astro.request.headers.get("user-agent")
+  Astro.request.headers.get("user-agent") as string
 );
 ---
 

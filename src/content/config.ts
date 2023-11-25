@@ -2,13 +2,18 @@
 import { z, defineCollection } from "astro:content";
 
 // 2. Define a `type` and `schema` for each collection
+// TODO translate this schema to the CMS solution
 const postsCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
     // tags: z.array(z.string()),
-    // image: z.string().optional(),
-    // date: z.date(),
+    images: z.object({
+      cover: z.string(),
+      article: z.array(z.string()).optional(),
+    }),
+    date: z.string(),
+    excerpt: z.string().max(140),
   }),
 });
 

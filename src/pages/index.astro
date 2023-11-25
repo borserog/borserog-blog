@@ -1,6 +1,8 @@
 ---
 import Icon from "astro-icon";
 import Layout, { type SocialMetaTags } from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import heroImage from "../content/images/hero.jpeg";
 
 const socialMeta: SocialMetaTags = {
   image: `${Astro.url.origin}/hero.jpeg`,
@@ -16,9 +18,10 @@ const socialMeta: SocialMetaTags = {
   <main class="max-w-screen-lg m-auto md:px-10">
     <div class="hero">
       <div class="hero-content flex-col gap-5 lg:flex-row-reverse lg:gap-6">
-        <img
+        <Image
+          alt="hero image"
           transition:animate="slide"
-          src="/hero.jpeg"
+          src={heroImage}
           class="max-w-[18rem] lg:max-w-sm rounded-lg shadow-2xl"
         />
         <div class="lg:pr-12">

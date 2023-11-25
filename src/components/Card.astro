@@ -1,28 +1,26 @@
 ---
-import type { AstroAssets } from "astro:assets";
+import { Image, type AstroAssets } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 interface Props {
   post: CollectionEntry<"posts">;
 }
-
 const { post } = Astro.props;
 ---
 
 <a href={`/blog/${post.slug}`}>
-  <!-- <div
-    class="min-h-[200px] max-h-[20vh] cursor-pointer transition-all image-full card bg-gradient-to-r from-slate-400 to-slate-500 shadow-xl hover:scale-105 hover:shadow-2xl active:scale-100"
+  <div
+    class="w-full min-h-[200px] max-h-[20vh] cursor-pointer transition-all image-full card shadow-xl hover:scale-105 hover:shadow-2xl active:scale-100"
   >
-    {
-      imageUrl !== null && (
-        <figure>
-          <img src={imageUrl} class="w-full" alt="article image" />
-        </figure>
-      )
-    }
+    <figure>
+      <img
+        src={`src/content/posts/images/${post.data.images.cover}`}
+        class="w-full"
+        alt="article image"
+      />
+    </figure>
     <div class="card-body">
-      <h2 class="card-title">{title}</h2>
-      <p>{excerpt}</p>
-    </div> -->
-
-  click
+      <h2 class="card-title">{[post.data.title]}</h2>
+      <p>{post.data.excerpt}</p>
+    </div>
+  </div>
 </a>

@@ -7,6 +7,7 @@ import {
 } from "astro:content";
 
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -17,12 +18,23 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-console.log(entry);
+const images = import.meta.glob(
+  "/src/content/posts/images/*.{jpeg,jpg,png,gif}"
+);
+const coverImageKey = `/src/content/posts/images/${entry.data.images.cover}`;
 const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <main class="w-auto max-w-[890px] mx-6 lg:mx-auto my-6 flex-auto">
-    <Content />
+  <main
+    class="max-w-[890px] m-6 lg:mx-auto flex-auto prose prose-sm md:prose-lg"
+  >
+    <header class="mb-10">
+      <h1>{entry.data.title}</h1>
+      <p class="italic">{entry.data.date}</p>
+    </header>
+    <article>
+      <Content />
+    </article>
   </main>
 </Layout>

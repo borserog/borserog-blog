@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import { collections } from "../../content/config";
 
 const allPosts = await getCollection("posts");
+// TODO Add sorting for date
 ---
 
 <Layout title="Blog">
@@ -17,8 +18,8 @@ const allPosts = await getCollection("posts");
         allPosts.map((el) => {
           return (
             <div class="flex flex-col">
-              <p class="mb-3">{el}</p>
-              <Card post={el}} />
+              <p class="mb-3 font-bold">{el.data.date}</p>
+              <Card post={el} />
             </div>
           );
         })

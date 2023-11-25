@@ -7,7 +7,7 @@ export default {
     },
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
     themes: ["light", "dracula", "cupcake", "synthwave", "cyberpunk"],
     darkTheme: "synthwave", // name of one of the included themes for dark mode
