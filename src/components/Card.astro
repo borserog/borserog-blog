@@ -6,8 +6,8 @@ interface Props {
   post: CollectionEntry<"posts">;
 }
 const { post } = Astro.props;
-const imagePath = Astro.url.origin + "/" + post.data.images.cover;
-console.log(imagePath);
+const imagePath = "/" + post.data.images.cover;
+console.log(Astro);
 ---
 
 <a href={`/blog/${post.slug}`}>
