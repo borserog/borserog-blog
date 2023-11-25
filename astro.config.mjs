@@ -8,6 +8,6 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), preact(), mdx()],
-  output: "hybrid",
+  output: "server",
   adapter: vercel(),
 });
