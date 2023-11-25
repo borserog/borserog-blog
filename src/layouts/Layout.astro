@@ -7,7 +7,6 @@ export type SocialMetaTags = {
   title: string;
   description: string;
   type: string;
-  url: string;
   image: string;
 };
 interface Props {
@@ -38,8 +37,11 @@ const isSafari = /^((?!chrome|android).)*safari/i.test(
           <meta property="og:title" content={socialMeta.title} />
           <meta property="og:description" content={socialMeta.description} />
           <meta property="og:type" content={socialMeta.type} />
-          <meta property="og:url" content={socialMeta.url} />
-          <meta property="og:image" content={socialMeta.image} />
+          <meta property="og:url" content={Astro.site} />
+          <meta
+            property="og:image"
+            content={Astro.site + "/" + socialMeta.image}
+          />
           <title>{socialMeta.title}</title>
         </>
       )
@@ -48,7 +50,6 @@ const isSafari = /^((?!chrome|android).)*safari/i.test(
     {!isSafari && <ViewTransitions />}
   </head>
   <body class="min-h-screen flex flex-col">
-    <pre>{Astro.url.origin}</pre>
     <Header />
     <slot />
     <Footer />

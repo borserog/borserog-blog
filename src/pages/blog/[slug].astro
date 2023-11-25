@@ -15,15 +15,14 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 const socialMeta: SocialMetaTags = {
-  image: `${Astro.url.origin}/${entry.data.images.cover}`,
+  image: `${entry.data.images.cover}`,
   description: entry.data.excerpt,
   title: entry.data.title,
-  url: Astro.url.href,
   type: "article",
 };
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={entry.data.title} socialMeta={socialMeta}>
   <main
     class="max-w-[890px] m-6 lg:mx-auto flex-auto prose prose-sm md:prose-lg"
   >
