@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from "preact/compat";
 import Constants from "../constants";
 
 export const ThemeToggle = () => {

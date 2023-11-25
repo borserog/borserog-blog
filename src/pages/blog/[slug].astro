@@ -1,13 +1,7 @@
 ---
-import {
-  getEntry,
-  getEntries,
-  type CollectionEntry,
-  getCollection,
-} from "astro:content";
+import { getCollection } from "astro:content";
 
 import Layout from "../../layouts/Layout.astro";
-import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -18,10 +12,6 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const images = import.meta.glob(
-  "/src/content/posts/images/*.{jpeg,jpg,png,gif}"
-);
-const coverImageKey = `/src/content/posts/images/${entry.data.images.cover}`;
 const { Content } = await entry.render();
 ---
 

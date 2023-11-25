@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import Card from "../../components/Card.astro";
 import Layout from "../../layouts/Layout.astro";
-import { collections } from "../../content/config";
 import { isAfter } from "date-fns";
 
 const allPosts = await getCollection("posts");

@@ -70,9 +70,9 @@ const isSafari = /^((?!chrome|android).)*safari/i.test(
           localStorage.setItem(DATA_THEME_KEY, LIGHT_THEME);
         }
 
-        htmlElement.setAttribute(
+        htmlElement?.setAttribute(
           DATA_THEME_KEY,
-          localStorage.getItem(DATA_THEME_KEY)
+          localStorage.getItem(DATA_THEME_KEY) || ""
         );
       };
 
