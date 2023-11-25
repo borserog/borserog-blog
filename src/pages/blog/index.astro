@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Card from "../../components/Card.astro";
-import Layout from "../../layouts/Layout.astro";
+import Layout, { type SocialMetaTags } from "../../layouts/Layout.astro";
 import { isAfter } from "date-fns";
 
 const allPosts = await getCollection("posts");
