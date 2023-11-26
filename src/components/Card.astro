@@ -14,7 +14,11 @@ const imagePath = "/" + post.data.images.cover;
     class="w-full sm:max-h-[20vh] cursor-pointer transition-all image-full card shadow-xl hover:scale-[1.02] hover:shadow-2xl active:scale-100"
   >
     <figure>
-      <img src={imagePath} class="w-full" alt="article image" />
+      <img
+        src={imagePath}
+        class="w-full"
+        alt="article image"
+      />
     </figure>
     <div class="card-body">
       <h2 class="card-title">{[post.data.title]}</h2>

@@ -1,11 +1,13 @@
 ---
-import { getCollection } from "astro:content";
-
+import { Image } from "astro:assets";
 import Layout, { type SocialMetaTags } from "../../layouts/Layout.astro";
+import { getEntryBySlug } from "astro:content";
+import { fade } from "astro:transitions";
 
-const post = (await getCollection("posts").then((posts) => {
-  return posts.find((post) => post.slug === Astro.params.slug);
-})) as any;
+const post = (await getEntryBySlug(
+  "posts",
+  Astro.params.slug as string
+)) as any;
 
 const socialMeta: SocialMetaTags = {
   image: `${post.data.images.cover}`,
@@ -26,6 +28,16 @@ const { Content } = await post.render();
       <p class="italic">{post.data.date}</p>
     </header>
     <article>
+      <figure>
+        <Image
+          transition:animate={fade({ duration: "0.4s" })}
+          src={Astro.url.origin + "/" + post.data.images.cover}
+          class="rounded-md"
+          width="1200"
+          height="628"
+          alt="article main image"
+        />
+      </figure>
       <Content />
     </article>
   </main>

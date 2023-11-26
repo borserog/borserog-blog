@@ -16,6 +16,7 @@ const postsCollection = defineCollection({
     excerpt: z.string().max(140),
   }),
 });
+export type Post = z.infer<typeof postsCollection>;
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
