@@ -13,10 +13,9 @@ const postsCollection = defineCollection({
       article: z.array(z.string()).optional(),
     }),
     date: z.string(),
-    excerpt: z.string().max(140),
+    excerpt: z.string().max(190),
   }),
 });
-export type Post = z.infer<typeof postsCollection>;
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {

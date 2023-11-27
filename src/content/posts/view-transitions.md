@@ -5,7 +5,7 @@ images: {
 }
 
 date: '2023-11-21'
-excerpt: With Angular v17 comes a replacement for the structural directive ngIf, let's take a look at some key differences.
+excerpt: Traditional traffic lights create unease with abrupt changes. Similarly, UI transitions can burden users. Angular v17 introduces 'withViewTransition()' to simplify animations, enhancing UX. 
 ---
 Traffic lights make everyone feel uneasy.
 
