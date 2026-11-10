@@ -1,7 +1,8 @@
 ---
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
 
 export type SocialMetaTags = {
   title: string;
@@ -47,7 +48,7 @@ const isSafari = /^((?!chrome|android).)*safari/i.test(
       )
     }
     <title>{title}</title>
-    {!isSafari && <ViewTransitions />}
+    {!isSafari && <ClientRouter />}
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />

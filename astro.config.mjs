@@ -1,13 +1,13 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import preact from "@astrojs/preact";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
+import icon from "astro-icon";
 
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), preact(), mdx()],
+  integrations: [preact(), mdx(), icon({ include: { mdi: ["github", "linkedin"] } })],
   output: "server",
   adapter: vercel(),
 });
