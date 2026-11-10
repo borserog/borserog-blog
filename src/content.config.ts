@@ -1,10 +1,9 @@
-// 1. Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
-// 2. Define a `type` and `schema` for each collection
-// TODO translate this schema to the CMS solution
 const postsCollection = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
   schema: z.object({
     title: z.string(),
     // tags: z.array(z.string()),
@@ -17,7 +16,6 @@ const postsCollection = defineCollection({
   }),
 });
 
-// 3. Export a single `collections` object to register your collection(s)
 export const collections = {
   posts: postsCollection,
 };

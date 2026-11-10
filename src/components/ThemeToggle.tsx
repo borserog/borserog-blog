@@ -8,7 +8,7 @@ export const ThemeToggle = () => {
       : [" swap-off", " swap-on"];
 
   const toggleTheme = () => {
-    const htmlElement = document.querySelector("html");
+    const htmlElement = document.documentElement;
 
     if (
       window.localStorage.getItem(Constants.DATA_THEME_KEY) ===

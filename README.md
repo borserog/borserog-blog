@@ -1,54 +1,32 @@
-# Astro Starter Kit: Basics
+# Gabriel Borsero’s blog
+
+Personal blog built with Astro and deployed to Vercel with server rendering.
+
+## Local development
+
+Use Node 24 (selected by `.nvmrc` and `package.json`). With nvm installed:
 
 ```sh
-npm create astro@latest -- --template basics
+nvm install
+nvm use
+npm ci
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Validation
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run test:deployment
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+This runs Astro checks, creates the production Vercel build, and asserts that every generated function uses Node 24. A successful build alone is insufficient: the old adapter silently emitted Node 18 functions even under a newer build runtime.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Smoke-check the homepage, `/blog`, all existing article URLs, and their images in a preview deployment after changing the deployment stack. An unknown article should return 404.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Deployment
 
-## 🧞 Commands
+The Vercel project’s **Node.js Version** must be `24.x`. Keep it aligned with the repository runtime declaration. The GitHub integration creates preview deployments for PRs; merging to the production branch deploys production.
 
-All commands are run from the root of the project, from a terminal:
+`vercel.json` runs the deployment regression check as part of each Vercel build.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Tailwind 3 runs through PostCSS so the existing daisyUI 3 styles can be retained while upgrading Astro. Content collections use `src/content.config.ts`; post IDs preserve the existing article URLs.

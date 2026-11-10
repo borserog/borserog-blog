@@ -1,7 +1,5 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 interface Props {
   post: CollectionEntry<"posts">;
 }
@@ -9,7 +7,7 @@ const { post } = Astro.props;
 const imagePath = "/" + post.data.images.cover;
 ---
 
-<a href={`/blog/${post.slug}`}>
+<a href={`/blog/${post.id}`}>
   <div
     class="w-full sm:max-h-[20vh] cursor-pointer transition-all image-full card shadow-xl hover:scale-[1.02] hover:shadow-2xl active:scale-100"
   >
